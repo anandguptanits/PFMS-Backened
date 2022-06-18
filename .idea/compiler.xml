@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="walletCategory" />
+        <module name="eurekaServer" />
+        <module name="transaction" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="eurekaServer" target="1.8" />
+      <module name="Springboot-user-microservice" target="8" />
+      <module name="transaction" target="1.8" />
+      <module name="walletCategory" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Springboot-user-microservice" options="-parameters" />
+      <module name="eurekaServer" options="-parameters" />
+      <module name="transaction" options="-parameters" />
+      <module name="walletCategory" options="-parameters" />
+    </option>
+  </component>
+</project>

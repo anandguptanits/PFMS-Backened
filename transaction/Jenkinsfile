@@ -1,0 +1,27 @@
+pipeline{
+    agent any
+    stages{
+        stage("Build"){
+            steps{
+                dir("transaction"){
+                    sh "mvn clean compile"
+                }
+            }
+        }
+        stage("Test"){
+            steps{
+                dir("transaction"){
+                    sh "mvn test"
+                }
+            }
+        }
+        stage("Dockerizing"){
+            steps{
+                dir("transaction"){
+                    sh "mvn clean package -DskipTests"
+                    sh "docker build -t transaction:${BUILD_NUMBER} ."
+                }
+            }
+        }
+    }
+}

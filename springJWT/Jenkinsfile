@@ -1,0 +1,38 @@
+pipeline{
+    agent any
+    stages{
+        stage("Build"){
+            steps{
+                dir("springJWT"){
+                    sh "mvn clean compile"
+                }
+            }
+        }
+        stage("Test"){
+            steps{
+                dir("springJWT"){
+                    sh "mvn test"
+                }
+            }
+        }
+        stage("Dockerizing"){
+            steps{
+                dir("springJWT"){
+                    sh "mvn clean package -DskipTests"
+                    sh "docker build -t userservice:${BUILD_NUMBER} ."
+                }
+            }
+        }
+    }
+    post{
+        always{
+            sh "echo This will run always"
+        }
+        success{
+            sh "echo This will only run if build is success"
+        }
+        failure{
+            sh "echo This will only run if build fails"
+        }
+    }
+}
